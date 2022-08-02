@@ -14,8 +14,8 @@
 <body>
     <header>
         <nav class="navbar">
-            <input class="checkbox" type="checkbox" name="" id="ham-button" />
-            <div class="hamburger-lines">
+            <input class="checkbox nes-pointer" type="checkbox" name="" id="ham-button" />
+            <div class="hamburger-lines nes-pointer">
                 <span class="line line1"></span>
                 <span class="line line2"></span>
                 <span class="line line3"></span>

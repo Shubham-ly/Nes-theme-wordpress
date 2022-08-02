@@ -1,26 +1,5 @@
 <?php
 
-class wpb_widget extends WP_Widget {
-    function __construct() {
-        parent::__construct(
-            'wp_widget', __('Wp_test_theme', 'wp_widget_domain'),
-            array( 'description' => __('Trying to create a test widget on wordpress', 'wp_widget_domain') ),
-        );
-    }
-    public function widget($args, $instance) {
-        $title = apply_filters('widget_title', $instance['title']);
-        echo $args['before_widget'];
-        if ( !empty($title) );
-    }
-    public function form($instance) {
-
-    }
-    public function update($new_instance, $old_instance) {
-
-    }
-
-}
-
 function nes_add_styles()
 {
     // $version = wp_get_theme()->get('Version');
@@ -36,6 +15,7 @@ function nes_add_scripts() {
 function nes_theme_support() {
     add_theme_support('title-tag');
     add_theme_support('custom-logo');
+    add_theme_support( 'post-thumbnails' );
 }
 
 function nes_menus() {
@@ -50,5 +30,46 @@ add_action('after_setup_theme', 'nes_theme_support');
 add_action('wp_enqueue_scripts', 'nes_add_styles');
 add_action('wp_enqueue_scripts', 'nes_add_scripts');
 
+function wpb_widgets_init() {
+
+    register_sidebar(array(
+        'name' => 'Custom Header Widget Area',
+        'id' => 'custom-header-widget',
+        'before_widget' => '<div class="chw-widget">',
+        'after_widget' => '</div>',
+        'before_title' => '<h2 class="chw-title">',
+        'after_title' => '</h2>',
+    ));
+    register_sidebar(array(
+        'name' => 'Footer Sidebar 1',
+        'id' => 'footer-sidebar-1',
+        'description' => 'Appears in the footer area',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ));
+    register_sidebar(array(
+        'name' => 'O nas',
+        'id' => 'o-nas',
+        'description' => 'O nas',
+        'before_widget' => '<div id="one" class="two">',
+        'after_widget' => '</div>',
+        'before_title' => '<h2>',
+        'after_title' => '</h2>'
+    ));
+    register_sidebar(array(
+        'name' => 'O naso',
+        'id' => 'studio-text',
+        'description' => 'Studia',
+        'before_widget' => '<div id="one" class="two">',
+        'after_widget' => '</div>',
+        'before_title' => '<h2>',
+        'after_title' => '</h2>'
+    ));
+}
+
+add_action('widgets_init', 'wpb_widgets_init', 0);
 ?>
+
 <!--  -->

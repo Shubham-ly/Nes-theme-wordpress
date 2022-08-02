@@ -35,7 +35,6 @@ nav .checkbox {
   left: 20px;
   z-index: 5;
   opacity: 0;
-  cursor: pointer;
   margin-left: 90%;
 }
 
@@ -134,5 +133,7 @@ nav .nav-link:hover {
 main {
   margin-top: 40px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-inline: 150px;
 }
